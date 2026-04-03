@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.wso2.carbon</groupId>
+        <artifactId>edu-id-claim-provider</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>org.wso2.carbon.edu.id.claim.provider</artifactId>
+    <name>EDU ID Claim Provider</name>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wso2.carbon.identity.inbound.auth.oauth2</groupId>
+            <artifactId>org.wso2.carbon.identity.oauth</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Private-Package>
+                            org.wso2.carbon.edu.id.claim.provider.internal,
+                        </Private-Package>
+                        <Export-Package>
+                            !org.wso2.carbon.edu.id.claim.provider.internal,
+                            org.wso2.carbon.edu.id.claim.provider.*; version="${project.version}"
+                        </Export-Package>
+                        <Import-Package>
+                            org.osgi.framework; version="${osgi.framework.imp.pkg.version.range}",
+                            org.osgi.service.component; version="${osgi.service.component.imp.pkg.version.range}",
+                            org.apache.commons.logging;version="${org.apache.commons.logging.imp.pkg.version.range}",
+                            org.wso2.carbon.identity.oauth2.authz;version="${identity.inbound.auth.oauth.import.version.range}",
+                            org.wso2.carbon.identity.oauth2.dto;version="${identity.inbound.auth.oauth.import.version.range}",
+                            org.wso2.carbon.identity.oauth2.token;version="${identity.inbound.auth.oauth.import.version.range}",
+                            org.wso2.carbon.identity.oauth2;version="${identity.inbound.auth.oauth.import.version.range}",
+                            org.wso2.carbon.identity.oauth2.token.handlers.claims;version="${identity.inbound.auth.oauth.import.version.range}",
+                            org.wso2.carbon.identity.openidconnect.*;version="${identity.inbound.auth.oauth.import.version.range}",
+                            org.wso2.carbon.identity.application.authentication.framework.model;version="${carbon.identity.package.import.version.range}",
+                            org.wso2.carbon.identity.application.common.model;version="${carbon.identity.package.import.version.range}",
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
