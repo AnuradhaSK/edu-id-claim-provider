@@ -47,7 +47,7 @@ org.wso2.carbon.edu.id.claim.provider/target/
 
 1. Build the project.
 2. Copy the generated bundle JAR from `org.wso2.carbon.edu.id.claim.provider/target/`.
-3. Place it in the server's <IS-HOME>/dropins deployment location according to your WSO2 IS distribution.
+3. Place it in the server's <IS-HOME>/repository/components/dropins deployment location according to your WSO2 IS distribution.
 4. Restart the server
 5. When you try out the application flows, make sure email is a requested user attribute and logged in user has an email, if you want to add eduID claim to access token/id token
 
