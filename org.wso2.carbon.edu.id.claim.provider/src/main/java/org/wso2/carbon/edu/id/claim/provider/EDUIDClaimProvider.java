@@ -25,6 +25,13 @@ public class EDUIDClaimProvider implements ClaimProvider, JWTAccessTokenClaimPro
         return null;
     }
 
+    /**
+     * Add additional claims to JWT access token.
+     *
+     * @param oAuthTokenReqMessageContext Oauth2 token request message's context data.
+     * @return Map of additional claims to be added to JWT access token.
+     * @throws IdentityOAuth2Exception IdentityOAuth2Exception.
+     */
     @Override
     public Map<String, Object> getAdditionalClaims(OAuthTokenReqMessageContext oAuthTokenReqMessageContext)
             throws IdentityOAuth2Exception {
@@ -52,6 +59,14 @@ public class EDUIDClaimProvider implements ClaimProvider, JWTAccessTokenClaimPro
         return null;
     }
 
+    /**
+     * Add additional claims to ID token.
+     *
+     * @param oAuthTokenReqMessageContext Oauth2 token request message's context data.
+     * @param oAuth2AccessTokenRespDTO Oauth2 access token response data transfer object.
+     * @return Map of additional claims to be added to ID token.
+     * @throws IdentityOAuth2Exception IdentityOAuth2Exception.
+     */
     @Override
     public Map<String, Object> getAdditionalClaims(OAuthTokenReqMessageContext oAuthTokenReqMessageContext,
                                                    OAuth2AccessTokenRespDTO oAuth2AccessTokenRespDTO)
